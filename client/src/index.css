@@ -23,6 +23,13 @@ input, select{
    */
    border: 2px #000000;
 }
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: black; /* Change this to the desired color */
+  opacity: 1; /* Ensures the icon is fully visible */
+}
+.black-calendar-icon {
+  color: black;
+}
 
 a {
   font-weight: 500;
