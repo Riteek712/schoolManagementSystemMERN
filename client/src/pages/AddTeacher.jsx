@@ -7,6 +7,7 @@ const AddTeacher = ({ onSuccess }) => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const [showForm, setShowForm] = useState(true); // State to control form visibility
+  // setShowForm(true)
 
   const onSubmit = async (formData) => {
     if (!formData.name || !formData.gender || !formData.dob || !formData.salary || !formData.contact) {
