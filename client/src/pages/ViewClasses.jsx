@@ -47,6 +47,7 @@ const ViewClasses = () => {
     <div>
       <h2>Classes:</h2>
       <button onClick={handleAddClassClick} style={{ fontSize: '24px', padding: '10px' }}>+</button>
+      {showAddClass && <AddClass onSuccess={handleAddClassSuccess} />}
       <ul>
         {classes.map((cls) => (
           <li key={cls.id}>
@@ -59,7 +60,7 @@ const ViewClasses = () => {
         ))}
       </ul>
 
-      {showAddClass && <AddClass onSuccess={handleAddClassSuccess} />} {/* Pass onSuccess prop */}
+       {/* Pass onSuccess prop */}
     </div>
   );
 };

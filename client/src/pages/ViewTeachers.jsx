@@ -51,6 +51,7 @@ const ViewTeachers = () => {
     <div>
       <h2>Teachers:</h2>
       <button onClick={handleAddTeacherClick} style={{ fontSize: '24px', padding: '10px' }}>+</button>
+      {showAddTeacher && <AddTeacher onSuccess={handleAddTeacherSuccess} />}
       {teachers.length > 0 ? (
         <ul>
           {teachers.map((teacher) => (
@@ -67,7 +68,7 @@ const ViewTeachers = () => {
         <p>No teachers in the database.</p>
       )}
 
-      {showAddTeacher && <AddTeacher onSuccess={handleAddTeacherSuccess} />} {/* Pass onSuccess prop */}
+      {/* Pass onSuccess prop */}
     </div>
   );
 };

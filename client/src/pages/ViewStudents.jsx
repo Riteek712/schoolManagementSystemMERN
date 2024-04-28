@@ -49,6 +49,7 @@ const ViewStudents = () => {
     <div>
       <h2>Students:</h2>
       <button onClick={handleAddStudentClick} style={{ fontSize: '24px', padding: '10px' }}>+</button>
+      {showAddStudent && <AddStudent onSuccess={handleAddStudentSuccess} />} 
       <ul>
         {students.map((student) => (
           <li key={student.id}>
@@ -61,7 +62,7 @@ const ViewStudents = () => {
           </li>
         ))}
       </ul>
-      {showAddStudent && <AddStudent onSuccess={handleAddStudentSuccess} />} 
+     
     </div>
   );
 };
