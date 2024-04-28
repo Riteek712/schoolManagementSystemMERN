@@ -40,8 +40,6 @@ const ViewTeachers = () => {
   };
 
   useEffect(() => {
-    
-  
     fetchTeachers();
   }, [teachers]);
 
@@ -67,6 +65,7 @@ const ViewTeachers = () => {
           {teachers.map((teacher) => (
             <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  'bg-gray-100 dark:border-gray-700">
               <li key={teacher.id}>
+              <strong>ID:</strong> {teacher.id}<br />
               <strong>Name:</strong> {teacher.name}<br />
               <strong>Date of Birth:</strong> {teacher.dob}<br />
               <strong>Salary:</strong> {teacher.salary}<br />

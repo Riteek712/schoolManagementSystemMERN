@@ -6,6 +6,8 @@ const AddStudent = ({onSuccess}) => {
     name: '',
     gender: '',
     dob: '',
+    assignedClass: '',
+    feesPaid: '',
     contact: ''
   });
   const [loading, setLoading] = useState(false);
@@ -23,6 +25,7 @@ const AddStudent = ({onSuccess}) => {
     try {
       setLoading(true);
       setErrorMessage(null);
+      
       const response = await axios.post('http://localhost:5000/api/students', formData);
       const data = response.data;
       if (data.success === false) {
@@ -33,6 +36,8 @@ const AddStudent = ({onSuccess}) => {
         name: '',
         gender: '',
         dob: '',
+        assignedClass: '',
+        feesPaid: '',
         contact: ''
       }); // Clear form data after successful submission
       onSuccess(); // Call onSuccess prop provided by the parent component
@@ -62,6 +67,14 @@ const AddStudent = ({onSuccess}) => {
       <div className='mb-4'>
         <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='dob'>Date of Birth</label>
         <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'  id='dob' type='date' value={formData.dob} onChange={handleChange} required />
+      </div>
+      <div className='mb-4' >
+        <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='assignedClass'>Assigned Class</label>
+        <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' id='assignedClass' type='text' value={formData.assignedClass} onChange={handleChange} placeholder="assignedClass"  />
+      </div>
+      <div className='mb-4' >
+        <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='feesPaid'>Fees Paid</label>
+        <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' id='feesPaid' type='number' value={formData.feesPaid} onChange={handleChange} placeholder="ex: 1000"  />
       </div>
       <div className='mb-6'>
         <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='contact'>Contact</label>

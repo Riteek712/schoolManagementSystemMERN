@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import ViewTeachers from './pages/ViewTeachers';
 import ViewStudents from './pages/ViewStudents';
 import ViewClasses from './pages/ViewClasses';
-import Dashboard from './pages/Dashboard';
+
 
 const App = () => {
   return (
@@ -49,7 +49,7 @@ const App = () => {
             <Route path="/students/view" element={<ViewStudents />} />
             <Route path="/classes/view" element={<ViewClasses />} />
             {/* Add a route for the Dashboard component */}
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard"  />
           </Routes>
         </div>
       </div>

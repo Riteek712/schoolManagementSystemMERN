@@ -64,9 +64,10 @@ const ViewStudents = () => {
         {students.map((student) => (
           <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  'bg-gray-100 dark:border-gray-700">
             <li key={student.id}>
+                <strong>ID:</strong> {student.id}<br />
                 <strong>Name:</strong> {student.name}<br />
                 <strong>Date of Birth:</strong> {student.dob}<br />
-                <strong>Class:</strong> {student.class ? student.class :"NA" }<br />
+                <strong>Class:</strong> {student.enrolledClass ? student.enrolledClass.name :"NA" }<br />
                 <strong>Gender:</strong> {student.gender}<br />
                 <strong>Contact:</strong> {student.contact}<br />
                 <strong>Fees Paid:</strong> {student.feesPaid ? student.feesPaid: "NA"}<br />
