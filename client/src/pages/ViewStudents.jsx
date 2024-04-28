@@ -72,7 +72,9 @@ const ViewStudents = () => {
     <div>
       <h2>Students:</h2>
       <button onClick={handleAddStudentClick} style={{ fontSize: '24px', padding: '10px' }}>+</button>
+      {showAddStudent && <button className='bg-red-400' onClick={()=>setShowAddStudent(false)}>Cancel</button>}
       {showAddStudent && <AddStudent onSuccess={handleAddStudentSuccess} />}
+      {showEditStudent && <button className='bg-red-400' onClick={()=>setShowEditStudent(false)}>Cancel</button>} 
       {showEditStudent && <EditStudent onSuccess={handleEditStudentSuccess} studentData={selectedStudent} />} 
       <ul className='flex' >
         {students.map((student) => (

@@ -100,6 +100,7 @@ const EditClass = ({ onSuccess, classData }) => {
           <button className='w-1/2' type='submit' aria-label='Update Class' disabled={loading}>
             {loading ? 'Updating...' : 'Update'}
           </button>
+          {/* <button onClick={()=>setShowForm(false)}>Calcel</button> */}
         </form>
       )}
     </>

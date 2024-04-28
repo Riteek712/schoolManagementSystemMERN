@@ -73,7 +73,9 @@ const ViewClasses = () => {
     <div>
       <h2>Classes:</h2>
       <button onClick={handleAddClassClick} style={{ fontSize: '24px', padding: '10px' }}>+</button>
+      {showAddClass && <button className='bg-red-400' onClick={()=>setShowAddClass(false)}>Cancel</button>}
       {showAddClass && <AddClass onSuccess={handleAddClassSuccess} />}
+      {showEditClass && <button className='bg-red-400' onClick={()=>setShowEditClass(false)}>Cancel</button>}
       {showEditClass && <EditClass onSuccess={handleEditClassSuccess} classData={classEditData} />}
       <div>
         <ul className='flex'>

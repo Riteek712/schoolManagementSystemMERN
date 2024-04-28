@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AddTeacher from './AddTeacher'; // Import the AddTeacher component
+import EditTeacher from './EditTeacher'
 
 const ViewTeachers = () => {
   const [teachers, setTeachers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showAddTeacher, setShowAddTeacher] = useState(false); // State to toggle AddTeacher component
+  const [showEditTeacher, setShowEditTeacher] = useState(false); // State to toggle EditTeacher component
+  const [selectedTeacher, setSelectedTeacher] = useState(null); // State to store the selected teacher for editing
+
+
 
   const fetchTeachers = async () => {
     try {
@@ -41,7 +46,7 @@ const ViewTeachers = () => {
 
   useEffect(() => {
     fetchTeachers();
-  }, [teachers]);
+  }, [teachers, showAddTeacher]);
 
   const handleAddTeacherClick = () => {
     setShowAddTeacher(true);
@@ -52,6 +57,17 @@ const ViewTeachers = () => {
     fetchTeachers(); // Fetch teachers again to refresh the list
   };
 
+  const handleEditTeacherClick = (teacher) => {
+    setSelectedTeacher({ ...teacher });
+    setShowEditTeacher(true);
+  };
+
+  const handleEditTeacherSuccess = () => {
+    setShowEditTeacher(false); // Hide the EditTeacher form
+    setSelectedTeacher(null); // Clear selected teacher data after successful edit
+    fetchTeachers(); // Fetch teachers again to refresh the list
+  };
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
@@ -59,7 +75,11 @@ const ViewTeachers = () => {
     <div>
       <h2>Teachers:</h2>
       <button onClick={handleAddTeacherClick} style={{ fontSize: '24px', padding: '10px' }}>+</button>
-      {showAddTeacher && <AddTeacher onSuccess={handleAddTeacherSuccess} />}
+      {showAddTeacher && <button className='bg-red-400' onClick={()=>setShowAddTeacher(false)}>Cancel</button>}
+      {showAddTeacher && <AddTeacher onSuccess={handleAddTeacherSuccess}  />}
+      
+      {showEditTeacher &&  <button className='bg-red-400' onClick={()=>setShowEditTeacher(false)}>Cancel</button>} 
+      {showEditTeacher && <EditTeacher onSuccess={handleEditTeacherSuccess} teacherData={selectedTeacher} />} 
       {teachers.length > 0 ? (
         <ul className='flex'>
           {teachers.map((teacher) => (
@@ -71,9 +91,9 @@ const ViewTeachers = () => {
               <strong>Salary:</strong> {teacher.salary}<br />
               <strong>Gender:</strong> {teacher.gender}<br />
               <strong>Contact:</strong> {teacher.contact}<br />
-              <strong>Assigned Class:</strong> {teacher.assignedClass ? teacher.assignedClass: "NA" }<br />
-              <button className='bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded' onClick={() => deleteTeacher(teacher.id)}>-</button>
-            <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">edit</button>
+              <strong>Assigned Class:</strong> {teacher.assignedClass ? teacher.assignedClass.name: "NA" }<br />
+              <button className='bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded' onClick={() => deleteTeacher(teacher.id)}>Delete</button>
+            <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={() => { handleEditTeacherClick(teacher) }}>Edit</button>
             </li>
             </div>
             
