@@ -36,7 +36,7 @@ const AddStudent = ({onSuccess}) => {
         name: '',
         gender: '',
         dob: '',
-        assignedClass: '',
+        enrolledClass: '',
         feesPaid: '',
         contact: ''
       }); // Clear form data after successful submission
@@ -44,6 +44,8 @@ const AddStudent = ({onSuccess}) => {
       setShowForm(false);
     } catch (error) {
       setErrorMessage(error.message);
+      console.log(error);
+      console.log(response);
       setLoading(false);      
     }
   };
@@ -69,8 +71,8 @@ const AddStudent = ({onSuccess}) => {
         <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'  id='dob' type='date' value={formData.dob} onChange={handleChange} required />
       </div>
       <div className='mb-4' >
-        <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='assignedClass'>Assigned Class</label>
-        <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' id='assignedClass' type='text' value={formData.assignedClass} onChange={handleChange} placeholder="assignedClass"  />
+        <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='enrolledClass'>Enrolled Class ID</label>
+        <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' id='enrolledClass' type='text' value={formData.enrolledClass} onChange={handleChange} placeholder="enrolledClass"  />
       </div>
       <div className='mb-4' >
         <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='feesPaid'>Fees Paid</label>
@@ -80,7 +82,7 @@ const AddStudent = ({onSuccess}) => {
         <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='contact'>Contact</label>
         <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' id='contact' type='text' value={formData.contact} onChange={handleChange} placeholder="Contact number.." required />
       </div>
-      {errorMessage && <span className="error">{errorMessage}</span>}
+      {errorMessage && <span className="error">{errorMessage} {formData.enrolledClass && "Please check if the enterend values are valid like enrolledClass ID and fees."}</span>}
       <button className='w-1/2' type='submit' aria-label='Add Student' disabled={loading}>
         {loading ? 'Adding...' : 'Add'}
       </button>
