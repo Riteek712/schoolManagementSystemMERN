@@ -55,12 +55,12 @@ const ViewClasses = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className='dark:bg-gray-800 w-4/5 mx-auto'>
-      <div className="w-4/5 mx-auto flex justify-between items-center">
-        <h2 className="text-xl font-bold  text-white">Classes:</h2>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleAddClassClick} style={{ fontSize: '32px', padding: '10px' }}>+</button>
+    <div >
+      
+        <h2 >Classes:</h2>
+        <button  onClick={handleAddClassClick} style={{ fontSize: '24px', padding: '10px' }}>+</button>
         {showAddClass && <AddClass onSuccess={handleAddClassSuccess} />}
-      </div>
+
       
       <div>
         <ul className='flex'>
@@ -70,7 +70,8 @@ const ViewClasses = () => {
             
             <strong>Name:</strong> {cls.name}<br />
             <strong>Year:</strong> {cls.year}<br />
-            <strong>Fees:</strong> {cls.fees}<br />
+            <strong>Fees:</strong> {cls.studentFees}<br />
+            <strong>Number of students enrolled:</strong> {cls.students.length}<br />
             <button className='bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded' onClick={() => deleteClass(cls.id)}>-</button>
             <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">edit</button>
         

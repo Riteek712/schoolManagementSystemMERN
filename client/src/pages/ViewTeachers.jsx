@@ -29,6 +29,16 @@ const ViewTeachers = () => {
     }
   };
 
+  const deleteTeacher = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/teacher/${id}`);
+      fetchTeachers(); // Fetch classes again to refresh the list
+    } catch (error) {
+      console.error('Error deleting teacher:', error);
+      setError('Error deleting teacher');
+    }
+  };
+
   useEffect(() => {
     
   
@@ -53,15 +63,21 @@ const ViewTeachers = () => {
       <button onClick={handleAddTeacherClick} style={{ fontSize: '24px', padding: '10px' }}>+</button>
       {showAddTeacher && <AddTeacher onSuccess={handleAddTeacherSuccess} />}
       {teachers.length > 0 ? (
-        <ul>
+        <ul className='flex'>
           {teachers.map((teacher) => (
-            <li key={teacher.id}>
+            <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  'bg-gray-100 dark:border-gray-700">
+              <li key={teacher.id}>
               <strong>Name:</strong> {teacher.name}<br />
               <strong>Date of Birth:</strong> {teacher.dob}<br />
               <strong>Salary:</strong> {teacher.salary}<br />
               <strong>Gender:</strong> {teacher.gender}<br />
               <strong>Contact:</strong> {teacher.contact}<br />
+              <strong>Assigned Class:</strong> {teacher.assignedClass ? teacher.assignedClass: "NA" }<br />
+              <button className='bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded' onClick={() => deleteTeacher(teacher.id)}>-</button>
+            <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">edit</button>
             </li>
+            </div>
+            
           ))}
         </ul>
       ) : (

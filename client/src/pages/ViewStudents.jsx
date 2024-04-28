@@ -28,11 +28,21 @@ const ViewStudents = () => {
     }
   };
 
+  const deleteStudent = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/students/${id}`);
+      fetchStudents(); // Fetch classes again to refresh the list
+    } catch (error) {
+      console.error('Error deleting student:', error);
+      setError('Error deleting student');
+    }
+  };
+
   useEffect(() => {
    
   
     fetchStudents();
-  }, []);
+  }, [students]);
   const handleAddStudentClick = () => {
     setShowAddStudent(true);
   };
@@ -50,16 +60,20 @@ const ViewStudents = () => {
       <h2>Students:</h2>
       <button onClick={handleAddStudentClick} style={{ fontSize: '24px', padding: '10px' }}>+</button>
       {showAddStudent && <AddStudent onSuccess={handleAddStudentSuccess} />} 
-      <ul>
+      <ul className='flex' >
         {students.map((student) => (
-          <li key={student.id}>
-              <strong>Name:</strong> {student.name}<br />
-              <strong>Date of Birth:</strong> {student.dob}<br />
-              <strong>Class:</strong> {student.class}<br />
-              <strong>Gender:</strong> {student.gender}<br />
-              <strong>Contact:</strong> {student.contact}<br />
-              <strong>Fees Paid:</strong> {student.feesPaid}<br />
-          </li>
+          <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  'bg-gray-100 dark:border-gray-700">
+            <li key={student.id}>
+                <strong>Name:</strong> {student.name}<br />
+                <strong>Date of Birth:</strong> {student.dob}<br />
+                <strong>Class:</strong> {student.class ? student.class :"NA" }<br />
+                <strong>Gender:</strong> {student.gender}<br />
+                <strong>Contact:</strong> {student.contact}<br />
+                <strong>Fees Paid:</strong> {student.feesPaid ? student.feesPaid: "NA"}<br />
+                <button className='bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded' onClick={() => deleteStudent(student.id)}>-</button>
+            <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">edit</button>
+            </li>
+          </div>
         ))}
       </ul>
      
