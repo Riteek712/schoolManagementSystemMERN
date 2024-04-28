@@ -78,15 +78,15 @@ const ViewClasses = () => {
       <div>
         <ul className='flex'>
           {classes.map((cls) => (
-            <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow bg-gray-100 dark:border-gray-700" key={cls.id}>
+            <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700" key={cls.id}>
               <li>
                 <strong>ID:</strong> {cls.id}<br />
                 <strong>Name:</strong> {cls.name}<br />
                 <strong>Year:</strong> {cls.year}<br />
                 <strong>Fees:</strong> {cls.studentFees}<br />
-                <strong>Number of students enrolled:</strong> {cls.students.length}<br />
-                <button className='bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded' onClick={() => deleteClass(cls.id)}>-</button>
-                <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={() => { editClass(cls) }}>edit</button>
+                {/* <strong>Number of students enrolled:</strong> {cls.students.length}<br /> */}
+                <button className='bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded' onClick={() => deleteClass(cls.id)}>Delete</button>
+                <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={() => { editClass(cls) }}>Edit</button>
               </li>
             </div>
           ))}
