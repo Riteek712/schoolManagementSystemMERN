@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AddStudent = () => {
+const AddStudent = ({onSuccess}) => {
   const [formData, setFormData] = useState({
     name: '',
     gender: '',
@@ -10,7 +10,7 @@ const AddStudent = () => {
   });
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
-
+  const [showForm, setShowForm] = useState(true);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
   };
@@ -29,15 +29,23 @@ const AddStudent = () => {
         return setErrorMessage(data.message);
       }
       setLoading(false);
-      setFormData({ name: '', gender: '', dob: '', contact: '' }); // Clear form data after successful submission
+      setFormData({
+        name: '',
+        gender: '',
+        dob: '',
+        contact: ''
+      }); // Clear form data after successful submission
+      onSuccess(); // Call onSuccess prop provided by the parent component
+      setShowForm(false);
     } catch (error) {
       setErrorMessage(error.message);
-      setLoading(false);
+      setLoading(false);      
     }
   };
 
   return (
-    <form className='addStudent' onSubmit={handleSubmit}>
+    <>
+    {showForm && (<form className='addStudent' onSubmit={handleSubmit}>
       <div>
         <label htmlFor='name'>Name</label>
         <input id='name' type='text' value={formData.name} onChange={handleChange} placeholder="Student name.." required />
@@ -63,7 +71,9 @@ const AddStudent = () => {
       <button type='submit' aria-label='Add Student' disabled={loading}>
         {loading ? 'Adding...' : 'Add'}
       </button>
-    </form>
+    </form>)}
+    </>
+    
   );
 };
 
