@@ -27,6 +27,17 @@ const ViewClasses = () => {
       setLoading(false);
     }
   };
+
+  const deleteClass = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/classes/${id}`);
+      fetchClasses(); // Fetch classes again to refresh the list
+    } catch (error) {
+      console.error('Error deleting class:', error);
+      setError('Error deleting class');
+    }
+  };
+
   useEffect(() => {
     fetchClasses();
   }, [classes]);
@@ -44,23 +55,31 @@ const ViewClasses = () => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div>
-      <h2>Classes:</h2>
-      <button onClick={handleAddClassClick} style={{ fontSize: '24px', padding: '10px' }}>+</button>
-      {showAddClass && <AddClass onSuccess={handleAddClassSuccess} />}
-      <ul>
-        {classes.map((cls) => (
-          <li key={cls.id}>
-          
-              <strong>Name:</strong> {cls.name}<br />
-              <strong>Year:</strong> {cls.year}<br />
-              <strong>Fees:</strong> {cls.fees}<br />
-          
-          </li>
-        ))}
-      </ul>
-
-       {/* Pass onSuccess prop */}
+    <div className='dark:bg-gray-800 w-4/5 mx-auto'>
+      <div className="w-4/5 mx-auto flex justify-between items-center">
+        <h2 className="text-xl font-bold  text-white">Classes:</h2>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleAddClassClick} style={{ fontSize: '32px', padding: '10px' }}>+</button>
+        {showAddClass && <AddClass onSuccess={handleAddClassSuccess} />}
+      </div>
+      
+      <div>
+        <ul className='flex'>
+          {classes.map((cls) => (
+            <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  'bg-gray-100 dark:border-gray-700">
+               <li key={cls.id}>
+            
+            <strong>Name:</strong> {cls.name}<br />
+            <strong>Year:</strong> {cls.year}<br />
+            <strong>Fees:</strong> {cls.fees}<br />
+            <button className='bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded' onClick={() => deleteClass(cls.id)}>-</button>
+            <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">edit</button>
+        
+        </li>
+            </div>
+           
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
