@@ -32,38 +32,44 @@ const AddTeacher = ({ onSuccess }) => {
   return (
     <>
       {showForm && (
-        <form className='addTeacher' onSubmit={handleSubmit(onSubmit)}>
-          <div>
-            <label htmlFor='name'>Name</label>
-            <input id='name' type='text' {...register('name', { required: true })} placeholder="Teacher's name.." />
+        <form className='bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4 w-1/4  mx-auto' onSubmit={handleSubmit(onSubmit)}>
+          <div className='mb-4'>
+            <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='name'>Name</label>
+            <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' id='name' type='text' {...register('name', { required: true })} placeholder="Teacher's name.." />
             {errors.name && <span className="error">Name is required</span>}
           </div>
-          <div>
-            <label htmlFor="gender">Gender</label>
-            <select id="gender" {...register('gender', { required: true })}>
+          <div className='mb-4'>
+            <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor="gender">Gender</label>
+            <select className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' id="gender" {...register('gender', { required: true })}>
+            <option value="">Select gender</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Others">Others</option>
             </select>
             {errors.gender && <span className="error">Gender is required</span>}
           </div>
-          <div>
-            <label htmlFor="dob">DOB:</label>
-            <input type="date" id="dob" {...register('dob', { required: true })} />
+          <div className='mb-4'>
+            <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor="dob">DOB:</label>
+            <input
+  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline black-calendar-icon"
+  type="date"
+  id="dob"
+  {...register('dob', { required: true })}
+/>
             {errors.dob && <span className="error">DOB is required</span>}
           </div>
-          <div>
-            <label htmlFor="contact">Contact Number:</label>
-            <input
+          <div className='mb-4'>
+            <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor="contact">Contact Number:</label>
+            <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
               type="tel"
               id="contact"
               {...register('contact', { required: true })}
             />
             {errors.contact && <span className="error">Contact number is required</span>}
           </div>
-          <div>
-            <label htmlFor="salary">Salary:</label>
-            <input
+          <div className='mb-6'>
+            <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor="salary">Salary:</label>
+            <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
               type="number"
               id="salary"
               {...register('salary', { required: true })}
@@ -71,7 +77,7 @@ const AddTeacher = ({ onSuccess }) => {
             {errors.salary && <span className="error">Salary is required</span>}
           </div>
           {errorMessage && <span className="error">{errorMessage}</span>}
-          <button type='submit' aria-label='Add Teacher' disabled={loading}>
+          <button className='w-1/2' type='submit' aria-label='Add Teacher' disabled={loading}>
             {loading ? 'Adding...' : 'Add'}
           </button>
         </form>

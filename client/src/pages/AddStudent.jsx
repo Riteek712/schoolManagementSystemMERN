@@ -45,30 +45,30 @@ const AddStudent = ({onSuccess}) => {
 
   return (
     <>
-    {showForm && (<form className='addStudent' onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor='name'>Name</label>
-        <input id='name' type='text' value={formData.name} onChange={handleChange} placeholder="Student name.." required />
+    {showForm && (<form className='bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4 w-1/4  mx-auto' onSubmit={handleSubmit}>
+      <div className='mb-4' >
+        <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='name'>Name</label>
+        <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' id='name' type='text' value={formData.name} onChange={handleChange} placeholder="Student name.." required />
       </div>
-      <div>
-        <label htmlFor='gender'>Gender</label>
-        <select id='gender' value={formData.gender} onChange={handleChange} required>
+      <div className='mb-4'>
+        <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='gender'>Gender</label>
+        <select className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' id='gender' value={formData.gender} onChange={handleChange} required>
           <option value="">Select gender</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Other">Other</option>
         </select>
       </div>
-      <div>
-        <label htmlFor='dob'>Date of Birth</label>
-        <input id='dob' type='date' value={formData.dob} onChange={handleChange} required />
+      <div className='mb-4'>
+        <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='dob'>Date of Birth</label>
+        <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'  id='dob' type='date' value={formData.dob} onChange={handleChange} required />
       </div>
-      <div>
-        <label htmlFor='contact'>Contact</label>
-        <input id='contact' type='text' value={formData.contact} onChange={handleChange} placeholder="Contact number.." required />
+      <div className='mb-6'>
+        <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='contact'>Contact</label>
+        <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' id='contact' type='text' value={formData.contact} onChange={handleChange} placeholder="Contact number.." required />
       </div>
       {errorMessage && <span className="error">{errorMessage}</span>}
-      <button type='submit' aria-label='Add Student' disabled={loading}>
+      <button className='w-1/2' type='submit' aria-label='Add Student' disabled={loading}>
         {loading ? 'Adding...' : 'Add'}
       </button>
     </form>)}

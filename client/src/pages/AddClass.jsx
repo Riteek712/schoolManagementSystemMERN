@@ -41,21 +41,21 @@ const AddClass = ({ onSuccess }) => {
   return (
     <>
       {showForm && (
-        <form className='addClass' onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor='name'>Name</label>
-            <input id='name' type='text' value={formData.name} onChange={handleChange} placeholder="Class name.." required />
+        <form className='bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4 w-1/4  mx-auto' onSubmit={handleSubmit}>
+          <div className='mb-4'>
+            <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='name'>Name</label>
+            <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' id='name' type='text' value={formData.name} onChange={handleChange} placeholder="Class name.." required />
           </div>
-          <div>
-            <label htmlFor='year'>Year</label>
-            <input id='year' type='number' value={formData.year} onChange={handleChange} placeholder="Year.." required />
+          <div className='mb-4'>
+            <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='year'>Year</label>
+            <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' id='year' type='number' value={formData.year} onChange={handleChange} placeholder="Year.." required />
           </div>
-          <div>
-            <label htmlFor='studentFees'>Student Fees</label>
-            <input id='studentFees' type='number' value={formData.studentFees} onChange={handleChange} placeholder="Student fees.." required />
+          <div className='mb-6'>
+            <label className='block text-gray-700 text-sm font-bold mb-2' htmlFor='studentFees'>Student Fees</label>
+            <input className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' id='studentFees' type='number' value={formData.studentFees} onChange={handleChange} placeholder="Student fees.." required />
           </div>
           {errorMessage && <span className="error">{errorMessage}</span>}
-          <button type='submit' aria-label='Add Class' disabled={loading}>
+          <button className='w-1/2' type='submit' aria-label='Add Class' disabled={loading}>
             {loading ? 'Adding...' : 'Add'}
           </button>
         </form>
