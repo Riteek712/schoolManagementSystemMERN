@@ -81,9 +81,9 @@ const ViewTeachers = () => {
       {showEditTeacher &&  <button className='bg-red-400' onClick={()=>setShowEditTeacher(false)}>Cancel</button>} 
       {showEditTeacher && <EditTeacher onSuccess={handleEditTeacherSuccess} teacherData={selectedTeacher} />} 
       {teachers.length > 0 ? (
-        <ul className='flex'>
+        <ul className='flex flex-wrap justify-evenly'>
           {teachers.map((teacher) => (
-            <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow  'bg-gray-100 dark:border-gray-700">
+            <div className="max-w-sm p-6 bg-blue-100 border border-gray-200 rounded-lg shadow  'bg-gray-100 dark:border-gray-700">
               <li key={teacher.id}>
               <strong>ID:</strong> {teacher.id}<br />
               <strong>Name:</strong> {teacher.name}<br />

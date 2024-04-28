@@ -10,36 +10,37 @@ const App = () => {
   return (
     <Router>
       <div className="mx-auto">
-        <div className="container mx-auto mt-8 text-center">
-          <h1 className="text-3xl font-bold mb-8">Welcome to My School Management App</h1>
+        <div className="container mx-auto mt-2 text-center">
+          {/* <h1 className="text-3xl font-bold mb-8">Welcome to My School Management App</h1> */}
         
 
-          <div className="flex justify-center mb-8 gap-4">
+          <div className="flex justify-center mb-2 gap-4">
             <Link
               to="/teachers/view"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-8 px-12 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
+              className="flex-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border-b-8 border-blue-700 hover:border-blue-800 rounded"
             >
-              Teacher
+             <span>Teacher</span> 
             </Link>
             <Link
               to="/students/view"
-              className="bg-green-500 hover:bg-green-700 text-white font-bold py-8 px-12 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
+              className="flex-1 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border-b-8 border-green-700 hover:border-green-800 rounded"
+              
             >
               Student
             </Link>
             <Link
               to="/classes/view"
-              className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-8 px-12 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
+              className="flex-1 bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 border-b-8 border-yellow-700 hover:border-yellow-800 rounded"
             >
               Classes
             </Link>
             {/* Add the Dashboard button */}
-            <Link
+            {/* <Link
               to="/dashboard"
               className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-8 px-12 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
             >
               Dashboard
-            </Link>
+            </Link> */}
           </div>
         
           {/* Routes */}

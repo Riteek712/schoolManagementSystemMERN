@@ -78,9 +78,9 @@ const ViewClasses = () => {
       {showEditClass && <button className='bg-red-400' onClick={()=>setShowEditClass(false)}>Cancel</button>}
       {showEditClass && <EditClass onSuccess={handleEditClassSuccess} classData={classEditData} />}
       <div>
-        <ul className='flex'>
+        <ul className='flex flex-wrap justify-evenly'>
           {classes.map((cls) => (
-            <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700" key={cls.id}>
+            <div className="flex justify-items-center max-w-sm p-6 bg-yellow-100 border border-gray-200 rounded-lg shadow dark:border-gray-700" key={cls.id}>
               <li>
                 <strong>ID:</strong> {cls.id}<br />
                 <strong>Name:</strong> {cls.name}<br />
