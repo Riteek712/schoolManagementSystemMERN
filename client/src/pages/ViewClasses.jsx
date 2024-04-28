@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import AddClass from './AddClass';
 import EditClass from './EditClass';
+import ViewChart from './ViewChart';
 
 const ViewClasses = () => {
   const [classes, setClasses] = useState([]);
@@ -9,6 +10,8 @@ const ViewClasses = () => {
   const [error, setError] = useState(null);
   const [showAddClass, setShowAddClass] = useState(false);
   const [showEditClass, setShowEditClass] = useState(false);
+  const [showChart, setShowChart] = useState(true);
+  
   const [classEditData, setClassEditData] = useState(null); // State for class edit data
 
   const fetchClasses = async () => {
@@ -54,6 +57,9 @@ const ViewClasses = () => {
   const handleAddClassClick = () => {
     setShowAddClass(true);
   };
+  const handleShowChart = () => {
+    setShowChart(true);
+  };
 
   const handleAddClassSuccess = () => {
     setShowAddClass(false);
@@ -66,6 +72,8 @@ const ViewClasses = () => {
     fetchClasses();
   };
 
+
+  
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
@@ -80,7 +88,11 @@ const ViewClasses = () => {
       <div>
         <ul className='flex flex-wrap justify-evenly'>
           {classes.map((cls) => (
-            <div className="flex justify-items-center max-w-sm p-6 bg-yellow-100 border border-gray-200 rounded-lg shadow dark:border-gray-700" key={cls.id}>
+            
+
+            <div className="flex justify-items-center  p-6 bg-yellow-100 border border-gray-200 rounded-lg shadow dark:border-gray-700" key={cls.id}>
+              
+              {showChart && <ViewChart classID={cls.id} />}
               <li>
                 <strong>ID:</strong> {cls.id}<br />
                 <strong>Name:</strong> {cls.name}<br />
@@ -89,6 +101,8 @@ const ViewClasses = () => {
                 {/* <strong>Number of students enrolled:</strong> {cls.students.length}<br /> */}
                 <button className='bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded' onClick={() => deleteClass(cls.id)}>Delete</button>
                 <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={() => { editClass(cls) }}>Edit</button>
+                {/* <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={() => handleShowChart()}>View Chart</button> */}
+               
               </li>
             </div>
           ))}
