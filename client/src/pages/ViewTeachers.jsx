@@ -8,30 +8,32 @@ const ViewTeachers = () => {
   const [error, setError] = useState(null);
   const [showAddTeacher, setShowAddTeacher] = useState(false); // State to toggle AddTeacher component
 
-  useEffect(() => {
-    const fetchTeachers = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/api/teachers');
-        if (Array.isArray(response.data.teachers)) {
-          const updatedTeachers = response.data.teachers.map(teacher => ({
-            ...teacher,
-            id: teacher._id.toString()
-          }));
-          setTeachers(updatedTeachers);
-        } else {
-          console.error('Unexpected API response format:', response.data);
-          setError('Unexpected API response format');
-        }
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching teachers:', error);
-        setError('Error fetching teachers');
-        setLoading(false);
+  const fetchTeachers = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/teachers');
+      if (Array.isArray(response.data.teachers)) {
+        const updatedTeachers = response.data.teachers.map(teacher => ({
+          ...teacher,
+          id: teacher._id.toString()
+        }));
+        setTeachers(updatedTeachers);
+      } else {
+        console.error('Unexpected API response format:', response.data);
+        setError('Unexpected API response format');
       }
-    };
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching teachers:', error);
+      setError('Error fetching teachers');
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    
   
     fetchTeachers();
-  }, []);
+  }, [teachers]);
 
   const handleAddTeacherClick = () => {
     setShowAddTeacher(true);
@@ -49,6 +51,7 @@ const ViewTeachers = () => {
     <div>
       <h2>Teachers:</h2>
       <button onClick={handleAddTeacherClick} style={{ fontSize: '24px', padding: '10px' }}>+</button>
+      {showAddTeacher && <AddTeacher onSuccess={handleAddTeacherSuccess} />}
       {teachers.length > 0 ? (
         <ul>
           {teachers.map((teacher) => (
@@ -65,7 +68,7 @@ const ViewTeachers = () => {
         <p>No teachers in the database.</p>
       )}
 
-      {showAddTeacher && <AddTeacher onSuccess={handleAddTeacherSuccess} />} {/* Pass onSuccess prop */}
+      {/* Pass onSuccess prop */}
     </div>
   );
 };
