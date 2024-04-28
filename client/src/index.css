@@ -7,13 +7,21 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: #B7E5B4;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+input, select{
+  color: #000000;
+  background-color: #f9f9f9;
+  /* padding-left: 1rem;
+  padding-top: 0.5rem;
+   */
+   border: 2px #000000;
 }
 
 a {
@@ -38,7 +46,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #ccd5ff;
   cursor: pointer;
   transition: border-color 0.25s;
 }
