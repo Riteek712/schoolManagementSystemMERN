@@ -80,9 +80,10 @@ const ViewClasses = () => {
   return (
     <div>
       <h2>Classes:</h2>
-      <button onClick={handleAddClassClick} style={{ fontSize: '24px', padding: '10px' }}>+</button>
+      <button  className='bg-yellow-200 shadow-2xl mr-4 mt-4 mb-4'  onClick={handleAddClassClick} >Add New</button>
       {showAddClass && <button className='bg-red-400' onClick={()=>setShowAddClass(false)}>Cancel</button>}
       {showAddClass && <AddClass onSuccess={handleAddClassSuccess} />}
+      <br/>
       {showEditClass && <button className='bg-red-400' onClick={()=>setShowEditClass(false)}>Cancel</button>}
       {showEditClass && <EditClass onSuccess={handleEditClassSuccess} classData={classEditData} />}
       <div>
@@ -90,9 +91,9 @@ const ViewClasses = () => {
           {classes.map((cls) => (
             
 
-            <div className="flex justify-items-center  p-6 bg-yellow-100 border border-gray-200 rounded-lg shadow dark:border-gray-700" key={cls.id}>
+            <div className="flex justify-items-center shadow-2xl hover:shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px] mr-4 ml-4 mb-4 mt-4 p-6 bg-yellow-100 border border-gray-200 rounded-lg dark:border-gray-700" key={cls.id}>
               
-              {showChart && <ViewChart classID={cls.id} />}
+              
               <li>
                 <strong>ID:</strong> {cls.id}<br />
                 <strong>Name:</strong> {cls.name}<br />
@@ -104,6 +105,7 @@ const ViewClasses = () => {
                 {/* <button className="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" onClick={() => handleShowChart()}>View Chart</button> */}
                
               </li>
+              {showChart && <ViewChart classID={cls.id} />}
             </div>
           ))}
         </ul>

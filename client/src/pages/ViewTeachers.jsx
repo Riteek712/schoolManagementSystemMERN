@@ -74,16 +74,16 @@ const ViewTeachers = () => {
   return (
     <div>
       <h2>Teachers:</h2>
-      <button onClick={handleAddTeacherClick} style={{ fontSize: '24px', padding: '10px' }}>+</button>
+      <button className='bg-blue-200 shadow-2xl mr-4 mt-4 mb-4' onClick={handleAddTeacherClick} >Add New</button>
       {showAddTeacher && <button className='bg-red-400' onClick={()=>setShowAddTeacher(false)}>Cancel</button>}
       {showAddTeacher && <AddTeacher onSuccess={handleAddTeacherSuccess}  />}
-      
+      <br/>
       {showEditTeacher &&  <button className='bg-red-400' onClick={()=>setShowEditTeacher(false)}>Cancel</button>} 
       {showEditTeacher && <EditTeacher onSuccess={handleEditTeacherSuccess} teacherData={selectedTeacher} />} 
       {teachers.length > 0 ? (
         <ul className='flex flex-wrap justify-evenly'>
           {teachers.map((teacher) => (
-            <div className="max-w-sm p-6 bg-blue-100 border border-gray-200 rounded-lg shadow  'bg-gray-100 dark:border-gray-700">
+            <div className="max-w-sm p-6 bg-blue-100 border border-gray-200 rounded-lg shadow-2xl hover:shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px] mr-4 ml-4 mb-4 mt-4  'bg-gray-100 dark:border-gray-700">
               <li key={teacher.id}>
               <strong>ID:</strong> {teacher.id}<br />
               <strong>Name:</strong> {teacher.name}<br />

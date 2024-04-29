@@ -71,14 +71,14 @@ const ViewStudents = () => {
   return (
     <div>
       <h2>Students:</h2>
-      <button onClick={handleAddStudentClick} style={{ fontSize: '24px', padding: '10px' }}>+</button>
+      <button className='bg-green-200 shadow-2xl mr-4 mt-4 mb-4' onClick={handleAddStudentClick}>Add New</button>
       {showAddStudent && <button className='bg-red-400' onClick={()=>setShowAddStudent(false)}>Cancel</button>}
       {showAddStudent && <AddStudent onSuccess={handleAddStudentSuccess} />}
       {showEditStudent && <button className='bg-red-400' onClick={()=>setShowEditStudent(false)}>Cancel</button>} 
       {showEditStudent && <EditStudent onSuccess={handleEditStudentSuccess} studentData={selectedStudent} />} 
       <ul className='flex flex-wrap justify-evenly' >
         {students.map((student) => (
-          <div className="max-w-sm p-6 bg-green-100 border border-gray-200 rounded-lg shadow  'bg-gray-100 dark:border-gray-700">
+          <div className="max-w-sm p-6 mr-4 ml-4 mb-4 mt-4 bg-green-100 border border-gray-200 rounded-lg shadow-2xl hover:shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px]  'bg-gray-100 dark:border-gray-700">
             <li key={student.id}>
                 <strong>ID:</strong> {student.id}<br />
                 <strong>Name:</strong> {student.name}<br />

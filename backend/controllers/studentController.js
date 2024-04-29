@@ -7,8 +7,16 @@ const getAllStudents = async (req, res) => {
   const limit = parseInt(req.query.limit) || 10;
   const skipIndex = (page - 1) * limit;
 
-  const { filterByName, sortBy } = req.query;
-  const filter = filterByName ? { name: { $regex: filterByName, $options: 'i' } } : {};
+  const { filterByName, sortBy, classID } = req.query;
+  const filter = {};
+  
+  if (filterByName) {
+    filter.name = { $regex: filterByName, $options: 'i' };
+  }
+  if (classID) {
+    filter.enrolledClass = classID;
+  }
+
   const sortOptions = sortBy ? { [sortBy]: 1 } : {};
 
   try {
