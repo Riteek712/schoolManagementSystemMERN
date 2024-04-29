@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link,  Navigate } from 'react-router-dom';
 import Info from './pages/Info';
 import ViewTeachers from './pages/ViewTeachers';
 import ViewStudents from './pages/ViewStudents';
@@ -46,7 +46,7 @@ const App = () => {
         
           {/* {/* Routes */}
           <Routes>
-            
+          <Route path="/" element={<Navigate to="/dashboard" />} />
             <Route path="/teachers/view" element={<ViewTeachers />} />
             <Route path="/students/view" element={<ViewStudents />} />
             <Route path="/classes/view" element={<ViewClasses />} />

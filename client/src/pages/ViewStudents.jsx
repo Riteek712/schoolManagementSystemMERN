@@ -71,7 +71,7 @@ const ViewStudents = () => {
   return (
     <div>
       <h2>Students:</h2>
-      <button onClick={handleAddStudentClick} style={{ fontSize: '24px', padding: '10px' }}>+</button>
+      <button className='bg-green-200 shadow-2xl mr-4 mt-4 mb-4' onClick={handleAddStudentClick}>Add New</button>
       {showAddStudent && <button className='bg-red-400' onClick={()=>setShowAddStudent(false)}>Cancel</button>}
       {showAddStudent && <AddStudent onSuccess={handleAddStudentSuccess} />}
       {showEditStudent && <button className='bg-red-400' onClick={()=>setShowEditStudent(false)}>Cancel</button>} 

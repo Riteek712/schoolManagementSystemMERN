@@ -80,9 +80,10 @@ const ViewClasses = () => {
   return (
     <div>
       <h2>Classes:</h2>
-      <button  className='bg-blue-400' onClick={handleAddClassClick} >Add New</button>
+      <button  className='bg-yellow-200 shadow-2xl mr-4 mt-4 mb-4'  onClick={handleAddClassClick} >Add New</button>
       {showAddClass && <button className='bg-red-400' onClick={()=>setShowAddClass(false)}>Cancel</button>}
       {showAddClass && <AddClass onSuccess={handleAddClassSuccess} />}
+      <br/>
       {showEditClass && <button className='bg-red-400' onClick={()=>setShowEditClass(false)}>Cancel</button>}
       {showEditClass && <EditClass onSuccess={handleEditClassSuccess} classData={classEditData} />}
       <div>

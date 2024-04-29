@@ -74,10 +74,10 @@ const ViewTeachers = () => {
   return (
     <div>
       <h2>Teachers:</h2>
-      <button onClick={handleAddTeacherClick} style={{ fontSize: '24px', padding: '10px' }}>+</button>
+      <button className='bg-blue-200 shadow-2xl mr-4 mt-4 mb-4' onClick={handleAddTeacherClick} >Add New</button>
       {showAddTeacher && <button className='bg-red-400' onClick={()=>setShowAddTeacher(false)}>Cancel</button>}
       {showAddTeacher && <AddTeacher onSuccess={handleAddTeacherSuccess}  />}
-      
+      <br/>
       {showEditTeacher &&  <button className='bg-red-400' onClick={()=>setShowEditTeacher(false)}>Cancel</button>} 
       {showEditTeacher && <EditTeacher onSuccess={handleEditTeacherSuccess} teacherData={selectedTeacher} />} 
       {teachers.length > 0 ? (
