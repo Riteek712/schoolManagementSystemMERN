@@ -78,7 +78,7 @@ const ViewStudents = () => {
       {showEditStudent && <EditStudent onSuccess={handleEditStudentSuccess} studentData={selectedStudent} />} 
       <ul className='flex flex-wrap justify-evenly' >
         {students.map((student) => (
-          <div className="max-w-sm p-6 bg-green-100 border border-gray-200 rounded-lg shadow  'bg-gray-100 dark:border-gray-700">
+          <div className="max-w-sm p-6 mr-4 ml-4 mb-4 mt-4 bg-green-100 border border-gray-200 rounded-lg shadow-2xl hover:shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px]  'bg-gray-100 dark:border-gray-700">
             <li key={student.id}>
                 <strong>ID:</strong> {student.id}<br />
                 <strong>Name:</strong> {student.name}<br />

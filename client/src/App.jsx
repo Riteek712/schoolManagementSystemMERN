@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-
+import Info from './pages/Info';
 import ViewTeachers from './pages/ViewTeachers';
 import ViewStudents from './pages/ViewStudents';
 import ViewClasses from './pages/ViewClasses';
@@ -14,7 +14,13 @@ const App = () => {
           {/* <h1 className="text-3xl font-bold mb-8">Welcome to My School Management App</h1> */}
         
 
-          <div className="flex justify-center mb-2 gap-4">
+          <div className="flex mr-2 ml-2 justify-center mb-2 gap-4">
+          <Link
+  to="/dashboard"
+  className="flex-1 bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 border-b-8 border-purple-700 hover:border-purple-800 rounded"
+>
+  Info
+</Link>
             <Link
               to="/teachers/view"
               className="flex-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border-b-8 border-blue-700 hover:border-blue-800 rounded"
@@ -34,23 +40,18 @@ const App = () => {
             >
               Classes
             </Link>
-            {/* Add the Dashboard button */}
-            {/* <Link
-              to="/dashboard"
-              className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-8 px-12 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105"
-            >
-              Dashboard
-            </Link> */}
+            {/* Add the Dashboard button */} 
+            
           </div>
         
-          {/* Routes */}
+          {/* {/* Routes */}
           <Routes>
             
             <Route path="/teachers/view" element={<ViewTeachers />} />
             <Route path="/students/view" element={<ViewStudents />} />
             <Route path="/classes/view" element={<ViewClasses />} />
             {/* Add a route for the Dashboard component */}
-            <Route path="/dashboard"  />
+            <Route path="/dashboard"  element={<Info />}/>
           </Routes>
         </div>
       </div>
